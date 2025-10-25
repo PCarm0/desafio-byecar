@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Dashboard - Byecar</title>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <h2>🚗 Byecar</h2>
+        </div>
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class='bx bxs-dashboard'></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="clients.html">
+                    <i class='bx bxs-user'></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="sales.html">
+                    <i class='bx bxs-shopping-bag'></i>
+                    <span>Vendas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="logout-btn">
+                    <i class='bx bxs-log-out'></i>
+                    <span>Sair</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1>Dashboard</h1>
+                <p>Bem-vindo de volta, <span id="user-name">Usuário</span>!</p>
+            </div>
+            <div class="user-info">
+                <span id="user-email">user@email.com</span>
+                <div class="user-avatar">
+                    <i class='bx bxs-user-circle'></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon clients">
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="total-clients">0</h3>
+                    <p>Total Clientes</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon sales">
+                    <i class='bx bxs-shopping-bag'></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="total-sales">0</h3>
+                    <p>Total Vendas</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon revenue">
+                    <i class='bx bxs-dollar-circle'></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="total-revenue">R$ 0</h3>
+                    <p>Receita Total</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon users">
+                    <i class='bx bxs-group'></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="total-users">0</h3>
+                    <p>Usuários</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="content-grid">
+            <!-- Recent Clients -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Clientes Recentes</h3>
+                    <a href="clients.html" class="view-all">Ver Todos</a>
+                </div>
+                <div class="card-content">
+                    <div id="recent-clients" class="recent-list">
+                        <div class="loading">Carregando clientes...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Sales -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Vendas Recentes</h3>
+                    <a href="sales.html" class="view-all">Ver Todos</a>
+                </div>
+                <div class="card-content">
+                    <div id="recent-sales" class="recent-list">
+                        <div class="loading">Carregando vendas...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3>Ações Rápidas</h3>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="window.location.href='clients.html?action=create'">
+                    <i class='bx bxs-user-plus'></i>
+                    Novo Cliente
+                </button>
+                <button class="action-btn" onclick="window.location.href='sales.html?action=create'">
+                    <i class='bx bxs-cart-add'></i>
+                    Nova Venda
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
