@@ -2,10 +2,23 @@ const SaleService = require('../services/saleService');
 
 /**
  * Controller para operações com vendas
+ * @class
  */
 class SaleController {
   /**
-   * Cria nova venda
+   * Cria nova venda no sistema
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.body - Corpo da requisição
+   * @param {number} req.body.client_id - ID do cliente (obrigatório)
+   * @param {number} req.body.amount - Valor da venda (obrigatório)
+   * @param {string} req.body.sale_date - Data da venda (obrigatório)
+   * @param {string} [req.body.description] - Descrição da venda
+   * @param {Object} req.user - Usuário autenticado
+   * @param {number} req.user.id - ID do usuário criador
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados da venda criada
+   * @throws {Error} 400 - Campos obrigatórios faltando
+   * @throws {Error} 400 - Erro na criação da venda
    */
   static async createSale(req, res) {
     try {
@@ -38,7 +51,11 @@ class SaleController {
   }
 
   /**
-   * Lista todas as vendas
+   * Lista todas as vendas cadastradas
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com array de vendas
+   * @throws {Error} 500 - Erro interno do servidor
    */
   static async getAllSales(req, res) {
     try {
@@ -57,7 +74,13 @@ class SaleController {
   }
 
   /**
-   * Busca venda por ID
+   * Busca venda específica por ID
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID da venda
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados da venda
+   * @throws {Error} 404 - Venda não encontrada
    */
   static async getSaleById(req, res) {
     try {
@@ -76,7 +99,18 @@ class SaleController {
   }
 
   /**
-   * Atualiza venda
+   * Atualiza dados de uma venda existente
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID da venda a ser atualizada
+   * @param {Object} req.body - Corpo da requisição com dados para atualização
+   * @param {number} [req.body.client_id] - ID do cliente
+   * @param {number} [req.body.amount] - Valor da venda
+   * @param {string} [req.body.sale_date] - Data da venda
+   * @param {string} [req.body.description] - Descrição da venda
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados da venda atualizada
+   * @throws {Error} 404 - Venda não encontrada
    */
   static async updateSale(req, res) {
     try {
@@ -99,7 +133,13 @@ class SaleController {
   }
 
   /**
-   * Deleta venda
+   * Remove venda do sistema
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID da venda a ser removida
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON de confirmação
+   * @throws {Error} 404 - Venda não encontrada
    */
   static async deleteSale(req, res) {
     try {
@@ -118,7 +158,13 @@ class SaleController {
   }
 
   /**
-   * Busca vendas por cliente
+   * Busca vendas associadas a um cliente específico
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.clientId - ID do cliente
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com array de vendas do cliente
+   * @throws {Error} 500 - Erro ao buscar vendas do cliente
    */
   static async getSalesByClient(req, res) {
     try {
