@@ -2,10 +2,23 @@ const ClientService = require('../services/clientService');
 
 /**
  * Controller para operações com clientes
+ * @class
  */
 class ClientController {
   /**
-   * Cria novo cliente
+   * Cria novo cliente no sistema
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.body - Corpo da requisição
+   * @param {string} req.body.name - Nome do cliente (obrigatório)
+   * @param {string} [req.body.email] - Email do cliente
+   * @param {string} [req.body.phone] - Telefone do cliente
+   * @param {string} [req.body.address] - Endereço do cliente
+   * @param {Object} req.user - Usuário autenticado
+   * @param {number} req.user.id - ID do usuário criador
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados do cliente criado
+   * @throws {Error} 400 - Nome é obrigatório
+   * @throws {Error} 400 - Erro na criação do cliente
    */
   static async createClient(req, res) {
     try {
@@ -38,7 +51,11 @@ class ClientController {
   }
 
   /**
-   * Lista todos os clientes
+   * Lista todos os clientes cadastrados
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com array de clientes
+   * @throws {Error} 500 - Erro interno do servidor
    */
   static async getAllClients(req, res) {
     try {
@@ -57,7 +74,13 @@ class ClientController {
   }
 
   /**
-   * Busca cliente por ID
+   * Busca cliente específico por ID
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID do cliente
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados do cliente
+   * @throws {Error} 404 - Cliente não encontrado
    */
   static async getClientById(req, res) {
     try {
@@ -76,7 +99,18 @@ class ClientController {
   }
 
   /**
-   * Atualiza cliente
+   * Atualiza dados de um cliente existente
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID do cliente a ser atualizado
+   * @param {Object} req.body - Corpo da requisição com dados para atualização
+   * @param {string} [req.body.name] - Nome do cliente
+   * @param {string} [req.body.email] - Email do cliente
+   * @param {string} [req.body.phone] - Telefone do cliente
+   * @param {string} [req.body.address] - Endereço do cliente
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com dados do cliente atualizado
+   * @throws {Error} 404 - Cliente não encontrado
    */
   static async updateClient(req, res) {
     try {
@@ -99,7 +133,13 @@ class ClientController {
   }
 
   /**
-   * Deleta cliente
+   * Remove cliente do sistema
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.params - Parâmetros da URL
+   * @param {string} req.params.id - ID do cliente a ser removido
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON de confirmação
+   * @throws {Error} 404 - Cliente não encontrado
    */
   static async deleteClient(req, res) {
     try {
