@@ -1,6 +1,21 @@
 const AuthService = require('../services/authService');
 
+/**
+ * Controller para operações de autenticação
+ * @class
+ */
 class AuthController {
+  /**
+   * Realiza login do usuário
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.body - Corpo da requisição
+   * @param {string} req.body.email - Email do usuário
+   * @param {string} req.body.password - Senha do usuário
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com token de autenticação e dados do usuário
+   * @throws {Error} 400 - Email e senha são obrigatórios
+   * @throws {Error} 401 - Credenciais inválidas
+   */
   static async login(req, res) {
     try {
       const { email, password } = req.body;
@@ -28,6 +43,18 @@ class AuthController {
     }
   }
 
+  /**
+   * Registra novo usuário no sistema
+   * @param {Object} req - Objeto de requisição do Express
+   * @param {Object} req.body - Corpo da requisição
+   * @param {string} req.body.email - Email do usuário
+   * @param {string} req.body.password - Senha do usuário
+   * @param {string} req.body.name - Nome do usuário
+   * @param {Object} res - Objeto de resposta do Express
+   * @returns {Promise<Object>} JSON com token de autenticação e dados do usuário criado
+   * @throws {Error} 400 - Dados obrigatórios faltando ou senha muito curta
+   * @throws {Error} 400 - Email já está em uso
+   */
   static async register(req, res) {
     try {
       const { email, password, name } = req.body;
