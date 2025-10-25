@@ -1,15 +1,15 @@
-###🚗 Byecar System
+## 🚗 Byecar System
 
 Desenvolvido com Node.js, Express e PostgreSQL.
 
-###📋 Funcionalidades
+## 📋 Funcionalidades
 
 ✅ Autenticação JWT
 ✅ CRUD de Usuários
 ✅ CRUD de Clientes
 ✅ CRUD de Vendas
 
-###🛠️ Tecnologias
+## 🛠️ Tecnologias
 
 Backend: Node.js, Express, PostgreSQL, JWT
 Frontend: HTML5, CSS3, JavaScript Vanilla
